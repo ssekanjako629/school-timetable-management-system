@@ -1,1 +1,46 @@
+CREATE DATABASE IF NOT EXISTS school_timetable_db;
+USE school_timetable_db;
 
+-- 1. Teachers Table
+CREATE TABLE teachers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL
+);
+
+-- 2. Classrooms Table
+CREATE TABLE classrooms (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL
+);
+
+-- 3. Subjects Table
+CREATE TABLE subjects (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL
+);
+
+-- 4. Timetable Entries Table
+CREATE TABLE timetable_entries (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    day_of_week ENUM('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday') NOT NULL,
+    period INT NOT NULL CHECK (period BETWEEN 1 AND 5),
+    classroom_id INT NOT NULL,
+    teacher_id INT NOT NULL,
+    subject_id INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (classroom_id) REFERENCES classrooms(id) ON DELETE CASCADE,
+    FOREIGN KEY (teacher_id) REFERENCES teachers(id) ON DELETE CASCADE,
+    FOREIGN KEY (subject_id) REFERENCES subjects(id) ON DELETE CASCADE,
+
+    -- PREVENTS CONFLICTS AT DB LEVEL:
+    -- 1. A classroom cannot have two lessons in the same period on the same day
+    CONSTRAINT unique_class_timeslot UNIQUE (day_of_week, period, classroom_id),
+    -- 2. A teacher cannot teach two classes in the same period on the same day
+    CONSTRAINT unique_teacher_timeslot UNIQUE (day_of_week, period, teacher_id)
+);
+
+-- Sample Seed Data
+INSERT INTO teachers (name) VALUES ('Mr. John Smith'), ('Mrs. Emily Davis'), ('Dr. Alan Turing');
+INSERT INTO classrooms (name) VALUES ('Grade 9'), ('Grade 10');
+INSERT INTO subjects (name) VALUES ('Mathematics'), ('English Literature'), ('Computer Science');
