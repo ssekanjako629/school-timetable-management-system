@@ -1,1 +1,155 @@
 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Timetable Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>School Timetable Management System</h1>
+    <p>Manage lessons, teachers and classroom schedules easily.</p>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#dashboard">Dashboard</a>
+    <a href="#timetable">Timetable</a>
+    <a href="#add">Add Lesson</a>
+    <a href="#about">About</a>
+</nav>
+
+<section id="home" class="welcome">
+    <h2>Welcome to Our School Timetable System</h2>
+    <p>
+        This system helps schools organize lessons,
+        manage teachers and create weekly timetables.
+    </p>
+</section>
+
+<section id="dashboard">
+    <h2>Dashboard</h2>
+
+    <div class="cards">
+        <div class="card">
+            <h3>5</h3>
+            <p>School Days</p>
+        </div>
+
+        <div class="card">
+            <h3>8</h3>
+            <p>Daily Periods</p>
+        </div>
+
+        <div class="card">
+            <h3>12</h3>
+            <p>Subjects</p>
+        </div>
+    </div>
+</section>
+
+<section id="timetable">
+    <h2>Weekly Class Timetable</h2>
+
+    <table>
+        <tr>
+            <th>Time</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+        </tr>
+
+        <tr>
+            <td>8:00 - 9:00</td>
+            <td>Mathematics</td>
+            <td>English</td>
+            <td>Computer</td>
+            <td>Biology</td>
+            <td>Physics</td>
+        </tr>
+
+        <tr>
+            <td>9:00 - 10:00</td>
+            <td>English</td>
+            <td>Mathematics</td>
+            <td>History</td>
+            <td>Computer</td>
+            <td>Chemistry</td>
+        </tr>
+
+        <tr>
+            <td>10:00 - 11:00</td>
+            <td>Biology</td>
+            <td>Physics</td>
+            <td>English</td>
+            <td>Mathematics</td>
+            <td>Geography</td>
+        </tr>
+
+        <tr>
+            <td>11:00 - 12:00</td>
+            <td>Computer</td>
+            <td>Chemistry</td>
+            <td>Mathematics</td>
+            <td>History</td>
+            <td>English</td>
+        </tr>
+    </table>
+</section>
+
+<section id="add">
+    <h2>Add a New Lesson</h2>
+
+    <form id="lessonForm">
+        <label>Subject:</label>
+        <input type="text" id="subject"
+               placeholder="Enter subject" required>
+
+        <label>Teacher:</label>
+        <input type="text" id="teacher"
+               placeholder="Enter teacher name" required>
+
+        <label>Day:</label>
+        <select id="day" required>
+            <option value="">Select day</option>
+            <option>Monday</option>
+            <option>Tuesday</option>
+            <option>Wednesday</option>
+            <option>Thursday</option>
+            <option>Friday</option>
+        </select>
+
+        <label>Time:</label>
+        <input type="time" id="time" required>
+
+        <button type="submit">Add Lesson</button>
+    </form>
+
+    <h3>Newly Added Lessons</h3>
+    <ul id="lessonList"></ul>
+</section>
+
+<section id="about">
+    <h2>About the System</h2>
+    <p>
+        The School Timetable Management System is designed
+        to simplify the preparation and management of school
+        timetables.
+    </p>
+</section>
+
+<footer>
+    <p>&copy; 2026 School Timetable Management System</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
